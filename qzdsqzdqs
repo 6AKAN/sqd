@@ -25,9 +25,9 @@ local Settings = {
         Enabled = false
     },
     SilentAim = {
-        Key = "Q",
+        Key = "C",
         AimAt = "LowerTorso",
-        PredictionAmount = 0.133145,
+        PredictionAmount = 0.139,
 
         FOVEnabled = false,
         FOVShow = false,
@@ -186,7 +186,7 @@ Mouse.KeyDown:Connect(function(k)
                 if lockVictim ~= nil then
                     lockVictim = nil
 
-                    sendNotification("unlocked")
+                    sendNotification("Unlocked!")
                 end
             end
         end
@@ -266,7 +266,7 @@ Mouse.KeyDown:Connect(function(k)
             elseif not silentAimed and silentVictim ~= nil then
                 silentVictim = nil
 
-                sendNotification('Unlocked!')
+                sendNotification('Unlocked')
             end
         end
     end
@@ -306,77 +306,77 @@ local main = lib:Init()
 ----------------------------------------
 
 ----------------------------------------
-local Home = main:CreateTab("home")
-local Config = main:CreateTab("config", "rbxassetid://6793572208")
-local Misc = main:CreateTab("misc", "rbxassetid://3192519002")
+local Home = main:CreateTab("Home")
+local Config = main:CreateTab("Config", "rbxassetid://6793572208")
+local Misc = main:CreateTab("Misc", "rbxassetid://3192519002")
 ----------------------------------------
 
 ----------------------------------------
-Home:CreateLabel("welcome back!", false)
+Home:CreateLabel("Welcome back!", false)
 ----------------------------------------
 
 ----------------------------------------
-Config:CreateLabel("config - aimlock", true)
-Config:CreateToggle("enabled", function(state)
+Config:CreateLabel("Config - Aimlock", true)
+Config:CreateToggle("Enabled", function(state)
     Settings.Aimlock.Enabled = state
 end)
-Config:CreateBox("prediction", 0.143, function(arg)
+Config:CreateBox("Prediction", 0.143, function(arg)
     Settings.Aimlock.Prediction = tonumber(arg)
 end)
-Config:CreateDropdown("aimpart", {'head', 'uppertorso', 'humanoidrootpart', 'lowerrorso'}, 'lowertorso', function(arg)
+Config:CreateDropdown("AimPart", {'Head', 'UpperTorso', 'HumanoidRootPart', 'LowerTorso'}, 'LowerTorso', function(arg)
     Settings.Aimlock.AimPart = tostring(arg)
 end)
-Config:CreateToggle("fov", function(state)
+Config:CreateToggle("FOV", function(state)
     Settings.Aimlock.FOVEnabled = state
 end)
-Config:CreateToggle("show fov", function(state)
+Config:CreateToggle("Show FOV", function(state)
     Settings.Aimlock.FOVShow = state
 end)
-Config:CreateSlider("fov size", 30, 0, 400, 1, function(arg)
+Config:CreateSlider("FOV Size", 30, 0, 400, 1, function(arg)
     Settings.Aimlock.FOVSize = tonumber(arg)
 end)
-Config:CreateBind("keybind", Enum.KeyCode.Q, function(arg)
+Config:CreateBind("Keybind", Enum.KeyCode.Q, function(arg)
     Settings.Aimlock.AimlockKey = arg
 end)
 ----------------------------------------
 
 ----------------------------------------
-Config:CreateLabel("config - silent", false)
-Config:CreateToggle("enabled", function(state)
+Config:CreateLabel("Config - Silent", false)
+Config:CreateToggle("Enabled", function(state)
     Settings.SilentAim.Enabled = state
 end)
-Config:CreateToggle("key to lock on", function(state)
+Config:CreateToggle("Key to lock on", function(state)
     Settings.SilentAim.KeyToLockOn = state
 end)
-Config:CreateBox("prediction", 0.133145, function(arg)
+Config:CreateBox("Prediction", 0.143, function(arg)
     Settings.SilentAim.PredictionAmount = tonumber(arg)
 end)
-Config:CreateDropdown("aimpart", {'head', 'uppertorso', 'humanoidrootpart', 'lowerrorso'}, 'lowertorso', function(arg)
+Config:CreateDropdown("AimPart", {'Head', 'UpperTorso', 'HumanoidRootPart', 'LowerTorso'}, 'LowerTorso', function(arg)
     Settings.SilentAim.AimAt = tostring(arg)
 end)
-Config:CreateToggle("fov", function(state)
+Config:CreateToggle("FOV", function(state)
     Settings.SilentAim.FOVEnabled = state
 end)
-Config:CreateToggle("show fov", function(state)
+Config:CreateToggle("Show FOV", function(state)
     Settings.SilentAim.FOVShow = state
 end)
-Config:CreateSlider("fov size", 30, 0, 400, 1, function(arg)
+Config:CreateSlider("FOV Size", 30, 0, 400, 1, function(arg)
     Settings.SilentAim.FOVSize = tonumber(arg)
 end)
-Config:CreateBind("keybind", Enum.KeyCode.Q, function(arg)
+Config:CreateBind("Keybind", Enum.KeyCode.Q, function(arg)
     Settings.SilentAim.Key = arg
 end)
 ----------------------------------------
 
 ----------------------------------------
-Misc:CreateLabel("miscellaneous", false)
-Misc:CreateToggle("cfs state", function(state)
+Misc:CreateLabel("Miscellaneous", false)
+Misc:CreateToggle("CFS State", function(state)
     Settings.CFSpeed.Toggled = state
 end)
-Misc:CreateSlider("cframe speed", 2, 0, 10, 0.1, function(arg)
+Misc:CreateSlider("CFrame Speed", 2, 0, 10, 0.1, function(arg)
     Settings.CFSpeed.Speed = tonumber(arg)
 end)
-Misc:CreateBind("cfs key", Enum.KeyCode.Z, function(arg)
+Misc:CreateBind("CFS Key", Enum.KeyCode.Z, function(arg)
     Settings.CFSpeed.Key = arg
 end)
 ----------------------------------------
